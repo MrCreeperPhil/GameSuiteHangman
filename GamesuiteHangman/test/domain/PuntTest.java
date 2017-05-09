@@ -27,6 +27,7 @@ public class PuntTest {
 		assertEquals(yCoordinaat, punt.getY());
 	}
 
+	@Test
 	public void equals_moet_true_teruggeven_als_x_en_y_coordinaat_gelijk_zijn() {
 		Punt puntAnder = new Punt(xCoordinaat, yCoordinaat);
 		assertTrue(punt.equals(puntAnder));
