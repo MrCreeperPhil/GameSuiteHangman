@@ -13,7 +13,12 @@ public class Launcher {
 		while(action.trim().equals("")||action.isEmpty()&& (action!="1" ||action!="2"||action!="0")){
 		    action = JOptionPane.showInputDialog("Wat wil je doen? \n1. speler aanmaken? \n2. figuur tekenen? \n0. exit");
 		}
+		try{
 		action1= Integer.parseInt(action);
+		}
+		catch(NumberFormatException e ){
+		//	action = JOptionPane.showConfirm
+		}
 			switch(action1)
 			{
 			case 0:
