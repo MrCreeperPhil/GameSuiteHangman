@@ -41,6 +41,7 @@ public class Launcher {
 				int yCoordinaat = Integer.parseInt(JOptionPane.showInputDialog("Welke y coördinaat?"));
 				Punt punt = new Punt(xCoordinaat, yCoordinaat);
 				JOptionPane.showMessageDialog(null, punt);
+
 				break;
 			case "Cirkel":
 				int xCoordinaat2 = Integer.parseInt(JOptionPane.showInputDialog("Welke x coördinaat?"));
