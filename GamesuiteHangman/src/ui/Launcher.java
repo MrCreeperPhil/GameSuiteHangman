@@ -58,6 +58,8 @@ public class Launcher {
 			String[] choices = { "Punt", "Cirkel", "Lijnstuk", "Driehoek", "Rechthoek" };
 			String input = (String) JOptionPane.showInputDialog(null, "Choose now...", "The Choice of a Lifetime",
 					JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+
+			// TODO: NullPointerException opvangen bij cancel
 			switch (input) {
 			case "Punt":
 				int xCoordinaat = Integer.parseInt(JOptionPane.showInputDialog("Welke x coördinaat?"));
