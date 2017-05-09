@@ -16,8 +16,8 @@ public class LijnStukTest {
 	public void LijnStuk_moet_lijnstuk_aanmaken_met_gegeven_startPunt_en_eindPunt() {
 		LijnStuk lijnstuk = new LijnStuk(punt1, punt2);
 
-		assertEquals(punt1, lijnstuk.getStartPunt());
-		assertEquals(punt2, lijnstuk.getEindPunt());
+		assertEquals(punt1, lijnstuk.getBeginpunt());
+		assertEquals(punt2, lijnstuk.getEindpunt());
 	}
 	
 	@Test (expected = DomainException.class)
