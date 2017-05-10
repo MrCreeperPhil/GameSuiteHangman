@@ -16,9 +16,7 @@ public class Rechthoek {
 	}
 
 	private void setLinkerBovenhoek(Punt linkerBovenhoek) {
-
-		if (linkerBovenhoek == null)
-			throw new DomainException("positie mag niet null zijn");
+		if(linkerBovenhoek==null) throw new DomainException("breedte mag niet kleiner of gelijk aan 0 zijn");
 		this.linkerBovenhoek = linkerBovenhoek;
 	}
 
@@ -26,9 +24,8 @@ public class Rechthoek {
 		return breedte;
 	}
 
-	private void setBreedte(int breedte) {
-		if (breedte <= 0)
-			throw new DomainException("breedte mag niet kleiner of gelijk aan 0 zijn");
+	private void setBreedte(int breedte){
+		if(breedte<=0) throw new DomainException("breedte mag niet kleiner of gelijk aan 0 zijn");
 		this.breedte = breedte;
 	}
 
@@ -37,11 +34,10 @@ public class Rechthoek {
 	}
 
 	private void setHoogte(int hoogte) {
-		if (hoogte <= 0)
-			throw new DomainException("hoogte mag niet kleiner of gelijk aan 0 zijn");
+		if(hoogte<=0) throw new DomainException("hoogte mag niet kleiner of gelijk aan 0 zijn");
 		this.hoogte = hoogte;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -65,13 +61,9 @@ public class Rechthoek {
 
 	@Override
 	public String toString() {
-		return "Rechthoek: positie: " + this.getLinkerBovenhoek() + " - breedte: " + this.getBreedte() + " - hoogte: "
-				+ this.getHoogte() + "\n" + this.getOmhullende();
+		return "Rechthoek: positie: " + this.linkerBovenhoek + " - breedte: " + this.breedte + " - hoogte: " + this.hoogte;
 	}
 
-	public Omhullende getOmhullende() {
-		Omhullende omhullende = new Omhullende(this.getLinkerBovenhoek(), this.getBreedte(), this.getHoogte());
-		return omhullende;
-	}
-
+	
 }
+
