@@ -16,7 +16,7 @@ public class Rechthoek {
 	}
 
 	private void setLinkerBovenhoek(Punt linkerBovenhoek) {
-		if(linkerBovenhoek==null) throw new DomainException("breedte mag niet kleiner of gelijk aan 0 zijn");
+		if(linkerBovenhoek==null) throw new DomainException("positie mag niet null zijn");
 		this.linkerBovenhoek = linkerBovenhoek;
 	}
 
@@ -61,7 +61,7 @@ public class Rechthoek {
 
 	@Override
 	public String toString() {
-		return "Rechthoek [breedte=" + this.breedte + ", hoogte=" + this.hoogte + ", linkerBovenhoek=" + this.linkerBovenhoek + "]";
+		return "Rechthoek: positie: (" + this.linkerBovenhoek + ") - breedte: " + this.breedte + " - hoogte: " +  this.hoogte;
 	}
 
 	
