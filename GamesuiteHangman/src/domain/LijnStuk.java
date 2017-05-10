@@ -3,7 +3,7 @@ package domain;
 public class LijnStuk {
 	private Punt eindpunt, beginpunt;
 
-	public LijnStuk( Punt beginpunt,Punt eindpunt) {
+	public LijnStuk(Punt beginpunt, Punt eindpunt) {
 		super();
 		setEindpuntEnBeginpunt(eindpunt, beginpunt);
 	}
@@ -13,20 +13,21 @@ public class LijnStuk {
 	}
 
 	private void setEindpuntEnBeginpunt(Punt eindpunt, Punt beginpunt) {
-		if(eindpunt==null)throw new DomainException("eindpunt mag niet leeg zijn.");
-		if(beginpunt==null)throw new DomainException("beginpunt mag niet leeg zijn.");
-		if(eindpunt==beginpunt)throw new DomainException("eindpunt en beginpunt mogen niet dezelfde waarde hebben.");
+		if (eindpunt == null)
+			throw new DomainException("eindpunt mag niet leeg zijn.");
+		if (beginpunt == null)
+			throw new DomainException("beginpunt mag niet leeg zijn.");
+		if (eindpunt == beginpunt)
+			throw new DomainException("eindpunt en beginpunt mogen niet dezelfde waarde hebben.");
 		this.eindpunt = eindpunt;
 		this.beginpunt = beginpunt;
-		
-		
+
 	}
 
 	public Punt getBeginpunt() {
 		return beginpunt;
 	}
 
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
