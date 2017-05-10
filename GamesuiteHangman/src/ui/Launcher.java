@@ -24,6 +24,7 @@ public class Launcher {
 		if (actionString == null) {
 			return false;
 		}
+
 		// Als de gebruiker iets anders ingeeft dan een getal, krijgen we een
 		// NumberFormatException.class Deze moet gecaught worden.
 		try {
@@ -33,13 +34,12 @@ public class Launcher {
 			action = 999;
 		}
 
-		// action = Integer.parseInt(actionString);
-
 		switch (action) {
+
 		case 0:
 			return false;
-		case 1:
 
+		case 1:
 			// nieuwe speler
 			String naam = JOptionPane.showInputDialog("Welkom! \nHoe heet je?");
 			try {
@@ -54,20 +54,23 @@ public class Launcher {
 			break;
 
 		case 2:
-
 			String[] choices = { "Punt", "Cirkel", "Lijnstuk", "Driehoek", "Rechthoek" };
 			String input = (String) JOptionPane.showInputDialog(null, "Choose now...", "The Choice of a Lifetime",
 					JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 
-			// TODO: NullPointerException opvangen bij cancel
+			if (input == null) {
+				return false;
+			}
+
 			switch (input) {
+
 			case "Punt":
 				int xCoordinaat = Integer.parseInt(JOptionPane.showInputDialog("Welke x coördinaat?"));
 				int yCoordinaat = Integer.parseInt(JOptionPane.showInputDialog("Welke y coördinaat?"));
 				Punt punt = new Punt(xCoordinaat, yCoordinaat);
 				JOptionPane.showMessageDialog(null, punt);
-
 				break;
+
 			case "Cirkel":
 				int xCoordinaat2 = Integer.parseInt(JOptionPane.showInputDialog("Welke x coördinaat?"));
 				int yCoordinaat2 = Integer.parseInt(JOptionPane.showInputDialog("Welke y coördinaat?"));
@@ -75,11 +78,13 @@ public class Launcher {
 				int straal = Integer.parseInt(JOptionPane.showInputDialog("Welke straal?"));
 				Cirkel cirkel = new Cirkel(punt2, straal);
 				JOptionPane.showMessageDialog(null, cirkel);
+				break;
 			}
 			break;
 
 		case 999:
 			break;
+
 		default:
 			break;
 		}
