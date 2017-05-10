@@ -52,7 +52,7 @@ public class Launcher {
 			break;
 
 		case 2:
-			String[] choices = { "Punt", "Cirkel", "Lijnstuk", "Driehoek", "Rechthoek" };
+			String[] choices = { "Punt", "Cirkel", "Driehoek", "Rechthoek" };
 			String input = (String) JOptionPane.showInputDialog(null, "Choose now...", "The Choice of a Lifetime",
 					JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 
@@ -81,16 +81,32 @@ public class Launcher {
 					JOptionPane.showMessageDialog(null, rechthoek);
 					break;
 				case "Driehoek":
+<<<<<<< HEAD
 					Punt punt4 = punt();
 					Punt punt5 = punt();
+=======
+					JOptionPane.showMessageDialog(null, "geef coördinaten voor punt 1");
+					Punt punt4 = punt();
+					JOptionPane.showMessageDialog(null, "geef coördinaten voor punt 2");
+					Punt punt5 = punt();
+					JOptionPane.showMessageDialog(null, "geef coördinaten voor punt 3");
+>>>>>>> 6db95382f0b16f231f9e1b4fe13fc45144e1c61f
 					Punt punt6 = punt();
 					Driehoek driehoek = new Driehoek(punt4, punt5, punt6);
 					JOptionPane.showMessageDialog(null, driehoek);
 					break;
 				}
+<<<<<<< HEAD
 				break;
 			} catch (Exception e) {
+=======
+
+				break;
+			} catch (NumberFormatException e) {
+>>>>>>> 6db95382f0b16f231f9e1b4fe13fc45144e1c61f
 				System.out.println("geen lege waarden doorgeven");
+			} catch (DomainException e) {
+				System.out.println(e.getMessage());
 			}
 
 		case 999:
