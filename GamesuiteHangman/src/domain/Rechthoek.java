@@ -64,8 +64,15 @@ public class Rechthoek {
 
 	@Override
 	public String toString() {
-		return "Rechthoek [breedte=" + this.breedte + ", hoogte=" + this.hoogte + ", linkerBovenhoek="
-				+ this.linkerBovenhoek + "]";
+		return "Rechthoek: positie: " + this.getLinkerBovenhoek() + " - breedte: " + this.getBreedte() + " - hoogte: "
+				+ this.getHoogte() + "\n" + this.getOmhullende();
 	}
 
+	public Omhullende getOmhullende() {
+		Omhullende omhullende = new Omhullende(this.getLinkerBovenhoek(), this.getBreedte(), this.getHoogte());
+		return omhullende;
+	}
+
+	
+	
 }
