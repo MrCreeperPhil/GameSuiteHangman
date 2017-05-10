@@ -5,28 +5,28 @@ public class LijnStuk {
 
 	public LijnStuk( Punt beginpunt,Punt eindpunt) {
 		super();
-		setBeginpunt(beginpunt);
-		setEindpunt(eindpunt);
+		setEindpuntEnBeginpunt(eindpunt, beginpunt);
 	}
 
 	public Punt getEindpunt() {
 		return eindpunt;
 	}
 
-	private void setEindpunt(Punt eindpunt) {
+	private void setEindpuntEnBeginpunt(Punt eindpunt, Punt beginpunt) {
 		if(eindpunt==null)throw new DomainException("eindpunt mag niet leeg zijn.");
+		if(beginpunt==null)throw new DomainException("beginpunt mag niet leeg zijn.");
+		if(eindpunt==beginpunt)throw new DomainException("eindpunt en beginpunt mogen niet dezelfde waarde hebben.");
 		this.eindpunt = eindpunt;
+		this.beginpunt = beginpunt;
+		
+		
 	}
 
 	public Punt getBeginpunt() {
 		return beginpunt;
 	}
 
-	private void setBeginpunt(Punt beginpunt) {
-		if(beginpunt==null)throw new DomainException("beginpunt mag niet leeg zijn.");
-		this.beginpunt = beginpunt;
-	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -51,6 +51,6 @@ public class LijnStuk {
 
 	@Override
 	public String toString() {
-		return "LijnStuk [eindpunt=" + eindpunt + ", beginpunt=" + beginpunt + "]";
+		return "Lijn: startpunt: " + this.beginpunt + " - eindpunt: " + this.eindpunt;
 	}
 }
