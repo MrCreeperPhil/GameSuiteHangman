@@ -1,6 +1,6 @@
 package domain;
 
-public class LijnStuk {
+public class LijnStuk extends Vorm{
 	private Punt eindpunt, beginpunt;
 
 	public LijnStuk(Punt beginpunt, Punt eindpunt) {
@@ -54,4 +54,5 @@ public class LijnStuk {
 	public String toString() {
 		return "Lijn: startpunt: " + this.beginpunt + " - eindpunt: " + this.eindpunt;
 	}
+
 }
