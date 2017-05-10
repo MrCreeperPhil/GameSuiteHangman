@@ -42,5 +42,9 @@ public class LijnStukTest {
 		LijnStuk lijnStuk = new LijnStuk(punt1, punt2);
 		assertFalse(lijnStuk.equals(null));
 	}
+	@Test (expected = DomainException.class)
+	public void beginpunt_mag_niet_hetzelfde_zijn_als_eindpunt(){
+		new LijnStuk(punt1, punt1);
+	}
 }
 	
