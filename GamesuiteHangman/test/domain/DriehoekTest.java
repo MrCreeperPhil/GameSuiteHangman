@@ -14,6 +14,7 @@ public class DriehoekTest {
 	private Punt punt3 = new Punt(190, 30);
 	private Punt zelfdeAlsPunt3 = new Punt(190, 30);
 	private Punt verschillendVanPunt3 = new Punt(120, 100);
+    private Punt punt4 = new Punt(30,60);
 
 	@Test
 	public void Driehoek_moet_DrieHoek_aanmaken_met_gegeven_hoekpunten() {
@@ -33,11 +34,40 @@ public class DriehoekTest {
 	public void Driehoek_Moet_exception_gooien_als_hoekpunt2_null()  {
 		new Driehoek(punt1, null, punt3);
 	}
+    
+    @Test (expected = DomainException.class)
+    public void Driehoek_moet_Exception_gooien_als_Punt1_Punt2_en_Punt3_op_een_lijn_liggen(){
+        new Driehoek(punt1, punt2, punt4);
+    }
 	
 	@Test (expected = DomainException.class)
 	public void DrieHoek_Moet_exception_gooien_als_hoekpunt3_null()  {
 		new Driehoek(punt1, punt2, null);
 	}
+    @Test (expected = DomainException.class)
+    public void Driehoek_moet_exception_gooien_als_hoekpunt1_en_hoekpunt2_gelijk(){
+        new Driehoek (punt1, zelfdeAlsPunt1, punt3);
+    }
+    @Test (expected = DomainException.class)
+    public void Driehoek_moet_exception_gooien_als_hoekpunt1_en_hoekpunt3_gelijk(){
+        new Driehoek (punt1, punt2, zelfdeAlsPunt1);
+    }
+    @Test (expected = DomainException.class)
+    public void Driehoek_moet_exception_gooien_als_hoekpunt2_en_hoekpunt3_gelijk2(){
+        new Driehoek (punt1, punt2, zelfdeAlsPunt2);
+    }
+    @Test (expected = DomainException.class)
+    public void Driehoek_moet_exception_gooien_als_hoekpunt2_en_hoekpunt1_gelijk(){
+        new Driehoek (zelfdeAlsPunt2, punt2, punt3);
+    }
+    @Test (expected = DomainException.class)
+    public void Driehoek_moet_exception_gooien_als_hoekpunt3_en_hoekpunt2_gelijk(){
+        new Driehoek (punt1, zelfdeAlsPunt3, punt3);
+    }
+    @Test (expected = DomainException.class)
+    public void Driehoek_moet_exception_gooien_als_hoekpunt3_en_hoekpunt1_gelijk(){
+        new Driehoek (zelfdeAlsPunt3, punt2, punt3);
+    }
 	
 	@Test
 	public void equals_moet_false_teruggeven_als_hoekPunt1_verschillend(){
