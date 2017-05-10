@@ -27,7 +27,7 @@ public class Cirkel {
 
 	public void setRadius(int radius) {
 		if (radius <= 0) {
-			throw new DomainException("radius moet strict positief zijn");
+			throw new DomainException("radius moet strikt positief zijn");
 		}
 		this.radius = radius;
 	}
