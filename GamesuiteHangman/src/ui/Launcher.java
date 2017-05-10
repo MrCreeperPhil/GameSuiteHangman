@@ -59,38 +59,37 @@ public class Launcher {
 			if (input == null) {
 				return false;
 			}
-			try{
-			switch (input) {
+			try {
+				switch (input) {
 
-			case "Punt":
-				Punt punt = punt();
-				JOptionPane.showMessageDialog(null, punt);
-				break;
+				case "Punt":
+					Punt punt = punt();
+					JOptionPane.showMessageDialog(null, punt);
+					break;
 
-			case "Cirkel":
-				Punt punt2 = punt();
-				int straal = Integer.parseInt(JOptionPane.showInputDialog("Welke straal?"));
-				Cirkel cirkel = new Cirkel(punt2, straal);
-				JOptionPane.showMessageDialog(null, cirkel);
+				case "Cirkel":
+					Punt punt2 = punt();
+					int straal = Integer.parseInt(JOptionPane.showInputDialog("Welke straal?"));
+					Cirkel cirkel = new Cirkel(punt2, straal);
+					JOptionPane.showMessageDialog(null, cirkel);
+					break;
+				case "Rechthoek":
+					Punt punt3 = punt();
+					int hoogte = Integer.parseInt(JOptionPane.showInputDialog("Welke hoogte?"));
+					int breedte = Integer.parseInt(JOptionPane.showInputDialog("Welke breedte?"));
+					Rechthoek rechthoek = new Rechthoek(punt3, breedte, hoogte);
+					JOptionPane.showMessageDialog(null, rechthoek);
+					break;
+				case "Driehoek":
+					Punt punt4 = punt();
+					Punt punt5 = punt();
+					Punt punt6 = punt();
+					Driehoek driehoek = new Driehoek(punt4, punt5, punt6);
+					JOptionPane.showMessageDialog(null, driehoek);
+					break;
+				}
 				break;
-			case "Rechthoek":
-				Punt punt3 = punt();
-				int hoogte = Integer.parseInt(JOptionPane.showInputDialog("Welke hoogte?"));
-				int breedte = Integer.parseInt(JOptionPane.showInputDialog("Welke breedte?"));
-				Rechthoek rechthoek = new Rechthoek(punt3, breedte, hoogte);
-				JOptionPane.showMessageDialog(null, rechthoek);
-				break;
-			case "Driehoek":
-				Punt punt4 = punt();
-				Punt punt5 = punt();
-				Punt punt6 = punt();
-				Driehoek driehoek = new Driehoek(punt4, punt5, punt6);
-				JOptionPane.showMessageDialog(null, driehoek);
-				break;
-			}
-			break;
-			} 
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("geen lege waarden doorgeven");
 			}
 
@@ -102,12 +101,12 @@ public class Launcher {
 		}
 		return true;
 	}
-	
-	public Punt punt(){
+
+	public Punt punt() {
 		int xCoordinaat = Integer.parseInt(JOptionPane.showInputDialog("Welke x coördinaat?"));
 		int yCoordinaat = Integer.parseInt(JOptionPane.showInputDialog("Welke y coördinaat?"));
 		Punt punt = new Punt(xCoordinaat, yCoordinaat);
 		return punt;
 	}
-	
+
 }
