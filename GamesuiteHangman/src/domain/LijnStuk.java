@@ -1,6 +1,6 @@
 package domain;
 
-public class LijnStuk extends Vorm{
+public class LijnStuk extends Vorm {
 	private Punt eindpunt, beginpunt;
 
 	public LijnStuk(Punt beginpunt, Punt eindpunt) {
@@ -24,7 +24,7 @@ public class LijnStuk extends Vorm{
 
 	}
 
-	public Punt getBeginpunt() {
+	public Punt getStartpunt() {
 		return beginpunt;
 	}
 
