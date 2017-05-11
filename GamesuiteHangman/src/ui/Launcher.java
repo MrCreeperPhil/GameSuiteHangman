@@ -123,7 +123,7 @@ public class Launcher {
 							//case lijnstuk 
 							//figuren.voegToe(lijnstuk);
 							break;
-							
+
 						}	
 						break;
 						
