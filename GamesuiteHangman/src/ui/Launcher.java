@@ -120,7 +120,7 @@ public class Launcher {
 							figuren.voegToe(driehoek);
 							break;
 							//case lijnstuk 
-							//figuren.voegToe(driehoek);
+							//figuren.voegToe(lijnstuk);
 						}	
 
 						break;
