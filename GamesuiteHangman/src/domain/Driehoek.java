@@ -1,12 +1,9 @@
 package domain;
 
-import java.awt.Graphics;
-
 public class Driehoek extends Vorm {
 	private Punt hoekPunt1;
 	private Punt hoekPunt2;
 	private Punt hoekPunt3;
-	private boolean zichtbaar = true;
 
 	public Driehoek(Punt hoekPunt1, Punt hoekPunt2, Punt hoekPunt3) {
 		setHoekPunten(hoekPunt1, hoekPunt2, hoekPunt3);
@@ -43,17 +40,6 @@ public class Driehoek extends Vorm {
 
 	public Punt getHoekPunt3() {
 		return hoekPunt3;
-	}
-
-	@Override
-	public boolean isZichtbaar() {
-		return this.zichtbaar;
-	}
-
-	@Override
-	public void setZichtbaar(boolean zichtbaar) {
-		this.zichtbaar = zichtbaar;
-
 	}
 
 	@Override
@@ -105,12 +91,6 @@ public class Driehoek extends Vorm {
 				grootsteY - kleinsteY);
 
 		return omhullende;
-	}
-
-	@Override
-	public void teken(Graphics graphics) {
-		// TODO Auto-generated method stub
-
 	}
 
 }
