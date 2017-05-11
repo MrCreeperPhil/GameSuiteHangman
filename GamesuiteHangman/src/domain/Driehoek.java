@@ -87,7 +87,7 @@ public class Driehoek extends Vorm {
 		if (grootsteY < this.hoekPunt3.getY())
 			grootsteY = this.hoekPunt3.getY();
 
-		Omhullende omhullende = new Omhullende(new Punt(kleinsteX, grootsteY), grootsteX - kleinsteX,
+		Omhullende omhullende = new Omhullende(new Punt(kleinsteX, kleinsteY), grootsteX - kleinsteX,
 				grootsteY - kleinsteY);
 
 		return omhullende;

@@ -46,5 +46,12 @@ public class LijnStukTest {
 	public void beginpunt_mag_niet_hetzelfde_zijn_als_eindpunt(){
 		new LijnStuk(punt1, punt1);
 	}
+	
+	@Test
+	public void getOmhullende_geeft_correcte_omhullende() {
+		LijnStuk lijnstuk = new LijnStuk(punt1, punt2);
+		Omhullende omhullende = new Omhullende(new Punt(10,20), 180, 10);
+		assertTrue(omhullende.equals(lijnstuk.getOmhullende()));
+	}
 }
 	
