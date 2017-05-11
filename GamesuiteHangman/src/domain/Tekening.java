@@ -1,9 +1,6 @@
 package domain;
 
-import java.awt.List;
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
 
 public class Tekening {
 	private String naam;
@@ -63,6 +60,7 @@ public class Tekening {
 		return false;
 	}
 
+	@Override
 	public boolean equals(Object object) {
 		if (object instanceof Tekening) {
 			Tekening tekening = (Tekening) object;
