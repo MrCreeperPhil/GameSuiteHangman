@@ -1,10 +1,14 @@
 package domain;
+import domain.*;
 
 public class temp {
 
 	public static void main(String[] args) {
-		Driehoek driehoek = new Driehoek(new Punt(1, 2), new Punt(55, 888), new Punt(4444, 6666));
-		System.out.println(driehoek.toString());
+		LijnStuk lijnstuk = new LijnStuk(new Punt(10, 20), new Punt(190, 30));
+		Omhullende test = lijnstuk.getOmhullende();
+		Omhullende omhullende = new Omhullende(new Punt(10,20), 180, 10);
+		System.out.println(omhullende);
+		System.out.println(test);
 
 	}
 
