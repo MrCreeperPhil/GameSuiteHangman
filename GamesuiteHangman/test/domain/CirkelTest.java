@@ -69,5 +69,12 @@ public class CirkelTest {
 		Cirkel cirkelAnder = new Cirkel(middelpunt, radius + 1);
 		assertFalse(cirkel.equals(cirkelAnder));
 	}
+	
+	@Test
+	public void getOmhullende_geeft_correcte_omhullende() {
+		Cirkel cirkel = new Cirkel(middelpunt, radius);
+		Omhullende omhullende = new Omhullende(new Punt(-2,3), 14,14);
+		assertTrue(omhullende.equals(cirkel.getOmhullende()));
+	}
 
 }
