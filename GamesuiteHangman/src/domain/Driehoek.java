@@ -57,6 +57,40 @@ public class Driehoek extends Vorm {
 
 	@Override
 	public String toString() {
-		return "Driehoek: hoekpunt1: " + this.getHoekPunt1() + " - hoekpunt2: " + this.getHoekPunt2() + " - hoekpunt3: " + this.getHoekPunt3();
+		return "Driehoek: hoekpunt1: " + this.getHoekPunt1() + " - hoekpunt2: " + this.getHoekPunt2() + " - hoekpunt3: "
+				+ this.getHoekPunt3();
 	}
+
+	@Override
+	public Omhullende getOmhullende() {
+		int kleinsteX = this.hoekPunt1.getX();
+		if (kleinsteX > this.hoekPunt2.getX())
+			kleinsteX = this.hoekPunt2.getX();
+		if (kleinsteX > this.hoekPunt3.getX())
+			kleinsteX = this.hoekPunt3.getX();
+
+		int kleinsteY = this.hoekPunt1.getY();
+		if (kleinsteY > this.hoekPunt2.getY())
+			kleinsteY = this.hoekPunt2.getY();
+		if (kleinsteY > this.hoekPunt3.getY())
+			kleinsteY = this.hoekPunt3.getY();
+
+		int grootsteX = this.hoekPunt1.getX();
+		if (grootsteX < this.hoekPunt2.getX())
+			grootsteX = this.hoekPunt2.getX();
+		if (grootsteX < this.hoekPunt3.getX())
+			grootsteX = this.hoekPunt3.getX();
+
+		int grootsteY = this.hoekPunt1.getY();
+		if (grootsteY < this.hoekPunt2.getY())
+			grootsteY = this.hoekPunt2.getY();
+		if (grootsteY < this.hoekPunt3.getY())
+			grootsteY = this.hoekPunt3.getY();
+
+		Omhullende omhullende = new Omhullende(new Punt(kleinsteX, grootsteY), grootsteX - kleinsteX,
+				grootsteY - kleinsteY);
+
+		return omhullende;
+	}
+
 }

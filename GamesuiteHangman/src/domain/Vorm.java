@@ -6,6 +6,6 @@ public abstract class Vorm {
 
 	public abstract String toString();
 	
-	//public abstract getOmhullende();
+	public abstract Omhullende getOmhullende();
 	
 }
