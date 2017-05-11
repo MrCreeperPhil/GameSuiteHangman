@@ -70,7 +70,7 @@ public class Omhullende {
 	public boolean equals(Object object) {
 		if (object instanceof Omhullende) {
 			Omhullende p = (Omhullende) object;
-			if (this.getLinkerBovenhoek() == p.getLinkerBovenhoek() && this.getBreedte() == p.getBreedte()
+			if (this.getLinkerBovenhoek().equals(p.getLinkerBovenhoek()) && this.getBreedte() == p.getBreedte()
 					&& this.getHoogte() == p.getHoogte()) {
 				return true;
 			}
