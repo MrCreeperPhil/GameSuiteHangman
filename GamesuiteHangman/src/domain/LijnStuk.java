@@ -24,7 +24,7 @@ public class LijnStuk extends Vorm {
 
 	}
 
-	public Punt getStartpunt() {
+	public Punt getBeginpunt() {
 		return beginpunt;
 	}
 
@@ -75,7 +75,7 @@ public class LijnStuk extends Vorm {
 			grootsteY = this.eindpunt.getY();
 
 
-		Omhullende omhullende = new Omhullende(new Punt(kleinsteX, grootsteY), grootsteX - kleinsteX,
+		Omhullende omhullende = new Omhullende(new Punt(kleinsteX, kleinsteY), grootsteX - kleinsteX,
 				grootsteY - kleinsteY);
 
 		return omhullende;
