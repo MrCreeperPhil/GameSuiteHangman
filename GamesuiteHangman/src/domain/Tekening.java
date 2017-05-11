@@ -1,72 +1,88 @@
 package domain;
 
+import java.awt.List;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 public class Tekening {
 	private String naam;
-	ArrayList<Vorm> vormen = new ArrayList<Vorm>();
-    private static final int MIN_X=0,MIN_Y=0;
-    private static final int MAX_X=399,MAX_Y=399;
-    
-	public Tekening(String naam) {
-		super();
-		this.naam = naam;
+	private static final int MIN_X = 0;
+	private static final int MIN_Y = 0;
+	private static final int MAX_X = 399;
+	private static final int MAX_Y = 399;
+	ArrayList<Vorm> VormenVanTekening = new ArrayList<Vorm>();
+	
+	public Tekening(String naam){
+		setNaam(naam);
 	}
-
-	public String getNaam() {
+	
+	public String getNaam(){
 		return naam;
 	}
 	
-	public void voegToe(Vorm vorm){
-		if(vorm == null) throw new DomainException("de vorm mag niet leeg");
-		vormen.add(vorm);
+	public void setNaam(String naam){
+		if(naam == null || naam.trim().isEmpty()){
+			throw new IllegalArgumentException(" Name is invalid ");
+		}
+		else{
+			this.naam=naam;
+		}
 	}
 	
+	public void voegToe(Vorm vorm){
+		if(bevat(vorm) == false){
+			VormenVanTekening.add(vorm);
+		}else{throw new DomainException(" The Figure is already in the Picture ");}
+	}
 	public Vorm getVorm(int index){
 		if (index <0) throw new DomainException("de array lest begint te tellen vanaf 0");
-		return vormen.get(index);
+		return VormenVanTekening.get(index);
 	}
 	
 	public int getAantalVormen(){
-		return vormen.size();
+		return VormenVanTekening.size();
 	}
 	
-	public void verwijder(Vorm teverwijderen){
-		vormen.remove(teverwijderen);
-		
+	public void verwijder(Vorm vorm){
+		if(bevat(vorm) == true){
+			VormenVanTekening.remove(vorm);
+		}else{throw new DomainException(" The figure was not found ");}
 	}
+	
+	
 	public boolean bevat(Vorm vorm){
 		if (vorm== null) throw new DomainException("de vorm mag niet leeg zijn");
-		if(vormen.contains(vorm))return true;
+		if(VormenVanTekening.contains(vorm))return true;
 		return false;	
 	}
-
-	@Override
-	public String toString() {
-		return "Tekening [naam=" + naam + ", vormen=" + vormen + "]";
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	
+	
+	public boolean equals(Object object){
+		if(object instanceof Tekening){
+			Tekening tekening = (Tekening) object;
+			if(tekening.getAantalVormen() != this.getAantalVormen()){
+				return false;
+			}
+			for (Vorm vorm : VormenVanTekening){
+				if (!tekening.bevat(vorm)){
+					return false;
+				}
+			}
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Tekening other = (Tekening) obj;
-		if (naam == null) {
-			if (other.naam != null)
-				return false;
-		} else if (!naam.equals(other.naam))
-			return false;
-		if (vormen == null) {
-			if (other.vormen != null)
-				return false;
-		} else if (!vormen.equals(other.vormen))
-			return false;
-		return true;
+		}
+		return false;
 	}
 	
-    
+	@Override
+	public String toString(){
+		String eersteDeel =  "Tekening met naam boom bestaat uit " + getAantalVormen() + " vormen: \n ";
+		String tweedeDeel = "";
+		for(int i=0; i<getAantalVormen(); i++){
+			tweedeDeel = tweedeDeel + getVorm(i).toString() + "\n";
+		}
+		return eersteDeel + tweedeDeel;
+	}
+	
+	
 }
