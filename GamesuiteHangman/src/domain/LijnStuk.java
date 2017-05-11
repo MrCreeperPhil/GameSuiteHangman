@@ -54,5 +54,31 @@ public class LijnStuk extends Vorm{
 	public String toString() {
 		return "Lijn: startpunt: " + this.beginpunt + " - eindpunt: " + this.eindpunt;
 	}
+	
+	@Override
+	public Omhullende getOmhullende() {
+		int kleinsteX = this.beginpunt.getX();
+		if (kleinsteX > this.eindpunt.getX())
+			kleinsteX = this.eindpunt.getX();
+
+		int kleinsteY = this.beginpunt.getY();
+		if (kleinsteY > this.eindpunt.getY())
+			kleinsteY = this.eindpunt.getY();
+
+		int grootsteX = this.beginpunt.getX();
+		if (grootsteX < this.eindpunt.getX())
+			grootsteX = this.eindpunt.getX();
+
+
+		int grootsteY = this.beginpunt.getY();
+		if (grootsteY < this.eindpunt.getY())
+			grootsteY = this.eindpunt.getY();
+
+
+		Omhullende omhullende = new Omhullende(new Punt(kleinsteX, grootsteY), grootsteX - kleinsteX,
+				grootsteY - kleinsteY);
+
+		return omhullende;
+	}
 
 }

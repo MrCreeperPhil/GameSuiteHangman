@@ -49,4 +49,9 @@ public class Cirkel extends Vorm {
 		return "Cirkel: middelpunt: " + middelpunt + " - straal: " + radius;
 	}
 
+	
+	@Override
+	public Omhullende getOmhullende() {
+		return new Omhullende(new Punt(this.middelpunt.getX()-this.radius, this.middelpunt.getY()-this.radius) ,radius*2, radius*2);
+	}
 }
