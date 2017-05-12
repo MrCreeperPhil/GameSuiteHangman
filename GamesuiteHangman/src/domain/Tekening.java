@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-public class Tekening {
+public class Tekening implements Drawable {
 	private String naam;
 	private static final int MIN_X = 0;
 	private static final int MIN_Y = 0;

@@ -1,6 +1,10 @@
 package domain;
 
-public class LijnStuk extends Vorm {
+import java.awt.BasicStroke;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+public class LijnStuk extends Vorm implements Drawable {
 	private Punt eindpunt, beginpunt;
 
 	public LijnStuk(Punt beginpunt, Punt eindpunt) {
@@ -69,6 +73,17 @@ public class LijnStuk extends Vorm {
 				(grootsteY - kleinsteY));
 
 		return omhullende;
+	}
+
+	@Override
+	public void teken(Graphics g) {
+		Graphics2D graphics2D = (Graphics2D) g;
+		graphics2D.setStroke(new BasicStroke(5));
+		
+		LijnStuk lijnstuk = new LijnStuk(this.beginpunt, this.eindpunt);
+		
+		g.drawLine(lijnstuk.getBeginpunt().getX(), lijnstuk.getBeginpunt().getY(), lijnstuk.getEindpunt().getX(),
+				lijnstuk.getEindpunt().getY());
 	}
 
 }

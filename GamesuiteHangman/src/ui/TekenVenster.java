@@ -49,7 +49,7 @@ public class TekenVenster extends Canvas {
 		graphics.drawRect(gebouw.getLinkerBovenhoek().getX(), gebouw.getLinkerBovenhoek().getY(), gebouw.getBreedte(),
 				gebouw.getHoogte());
 
-		graphics.drawLine(boomstam.getStartpunt().getX(), boomstam.getStartpunt().getY(), boomstam.getEindpunt().getX(),
+		graphics.drawLine(boomstam.getBeginpunt().getX(), boomstam.getBeginpunt().getY(), boomstam.getEindpunt().getX(),
 				boomstam.getEindpunt().getY());
 
 		int[] xPoints = { dak.getHoekPunt1().getX(), dak.getHoekPunt2().getX(), dak.getHoekPunt3().getX() };
