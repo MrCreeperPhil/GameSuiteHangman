@@ -2,7 +2,7 @@ package ui;
 
 public class LauncherApp {
 	public static void main(String[] args) {
-		Launcher launcher = new Launcher();
+		LaunchHangman launcher = new LaunchHangman();
 		launcher.start();
 		while (launcher.run());
 	}

@@ -86,6 +86,12 @@ public class TekeningHangMan extends Tekening {
 	}
 
 	public void teken(Graphics graphics) {
+		for (Vorm vorm : galg)
+			 vorm.teken(graphics);
+		for (Vorm vorm : mannetje)
+			if(vorm.isZichtbaar()){
+				 vorm.teken(graphics);
+			}
 
 	}
 
