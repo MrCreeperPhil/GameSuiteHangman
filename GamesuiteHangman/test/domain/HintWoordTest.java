@@ -11,7 +11,6 @@ public class HintWoordTest {
 	@Test
 	public void HintWoord_moet_HintWoord_aanmaken_waarvan_alle_letters_verborgen_zijn() {
 		String woord = "test";
-
 		HintWoord hint = new HintWoord(woord);
 		assertEquals(woord, hint.getWoord());
 		assertEquals("_ _ _ _", hint.toString());
@@ -74,7 +73,6 @@ public class HintWoordTest {
 		assertTrue(hint.raad('e'));
 		assertTrue(hint.raad('t'));
 		assertTrue(hint.raad('s'));
-
 		assertTrue(hint.isGeraden());
 	}
 
