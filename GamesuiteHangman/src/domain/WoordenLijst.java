@@ -26,7 +26,11 @@ public class WoordenLijst {
 	}
 	
 	public String getRandomWoord(){
+		if(woorden.size() > 0){
 		int random = (int) (Math.random() * woorden.size());
 		return woorden.get(random);
+		}else{
+			throw new DomainException("Verzameling moet woorden bevatten.");
+		}
 	}
 }
