@@ -10,11 +10,11 @@ public class Launcher {
 	public void start() {
 		launcher = new Launcher();
 	}
-
+	Speler speler= null;
 	// launcher blijft loopen zolang run() boolean true is.
 	public boolean run() {
 		int action = 0;
-		Speler speler= null;
+		
 		String actionString = JOptionPane
 				.showInputDialog("Wat wil je doen? \n1. speler aanmaken? \n2. figuur tekenen? \n0. exit");
 
@@ -58,8 +58,9 @@ public class Launcher {
 			if (naamFiguur == null || naamFiguur.trim().equals("")){
 				return false;
 			}
+			System.out.print(speler);
 			Tekening figuren = new Tekening(naamFiguur);
-			
+			System.out.print(speler);
 			GameHoofdScherm view = new GameHoofdScherm(speler.getNaam(), figuren);
 			view.setVisible(true);
 			view.teken();

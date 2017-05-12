@@ -1,8 +1,10 @@
 package domain;
 
+import java.awt.BasicStroke;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
-public class Cirkel extends Vorm {
+public class Cirkel extends Vorm implements Drawable {
 	private Punt middelpunt;
 	private int radius;
 	private boolean zichtbaar = true;
@@ -71,7 +73,14 @@ public class Cirkel extends Vorm {
 
 	@Override
 	public void teken(Graphics graphics) {
-		// TODO Auto-generated method stub
+		Graphics2D graphics2D = (Graphics2D) graphics;
+		graphics2D.setStroke(new BasicStroke(5));
+		
+		Cirkel cirkel = new Cirkel(this.middelpunt, this.radius);
+
+		graphics.drawOval(cirkel.getOmhullende().getMinimumX(), cirkel.getOmhullende().getMinimumY(),
+				cirkel.getOmhullende().getBreedte(), cirkel.getOmhullende().getHoogte());
+
 
 	}
 }
