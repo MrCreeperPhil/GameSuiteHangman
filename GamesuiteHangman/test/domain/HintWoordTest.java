@@ -68,6 +68,7 @@ public class HintWoordTest {
 
 	@Test
 	public void isGeraden_geeft_true_als_alle_letters_geraden() {
+
 		HintWoord hint = new HintWoord("test");
 		assertTrue(hint.raad('e'));
 		assertTrue(hint.raad('t'));
