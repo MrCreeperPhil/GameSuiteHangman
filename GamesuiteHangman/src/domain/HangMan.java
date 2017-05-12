@@ -2,8 +2,27 @@ package domain;
 
 public class HangMan {
 
-	public HangMan(Speler speler, WoordenLijst woordenlijst) {
-		// TODO Auto-generated constructor stub
+	private Speler speler;
+	private WoordenLijst woordenLijst;
+	private HintWoord hintwoord;
+
+	public HangMan(Speler speler, WoordenLijst woordenLijst) {
+		this.setSpeler(speler);
+		this.setWoordenLijst(woordenLijst);
+	}
+
+	private void setSpeler(Speler speler) {
+		if (speler == null) {
+			throw new DomainException("Voeg een speler toe.");
+		}
+		this.speler = speler;
+	}
+
+	private void setWoordenLijst(WoordenLijst woordenLijst) {
+		if (woordenLijst == null) {
+			throw new DomainException("Voeg een woordenlijst toe.");
+		}
+		this.woordenLijst = woordenLijst;
 	}
 
 	public String getHint() {
@@ -11,7 +30,7 @@ public class HangMan {
 	}
 
 	public Speler getSpeler() {
-		return null;
+		return this.speler;
 	}
 
 	public TekeningHangMan getTekening() {
