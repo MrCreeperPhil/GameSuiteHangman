@@ -1,11 +1,8 @@
 package domain;
 
-import java.awt.Graphics;
-
-public class Rechthoek extends Vorm {
+public class Rechthoek extends Vorm{
 	private int breedte, hoogte;
 	private Punt linkerBovenhoek;
-	private boolean zichtbaar = true;
 
 	public Rechthoek(Punt linkerBovenhoek, int breedte, int hoogte) {
 		super();
@@ -46,17 +43,6 @@ public class Rechthoek extends Vorm {
 	}
 
 	@Override
-	public boolean isZichtbaar() {
-		return this.zichtbaar;
-	}
-
-	@Override
-	public void setZichtbaar(boolean zichtbaar) {
-		this.zichtbaar = zichtbaar;
-
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -86,12 +72,6 @@ public class Rechthoek extends Vorm {
 	public Omhullende getOmhullende() {
 		Omhullende omhullende = new Omhullende(this.getLinkerBovenhoek(), this.getBreedte(), this.getHoogte());
 		return omhullende;
-	}
-
-	@Override
-	public void teken(Graphics graphics) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

@@ -86,8 +86,9 @@ public class Tekening {
 	}
 	
 	@Override
-	public String toString(){
-		String eersteDeel =  "Tekening met naam boom bestaat uit " + getAantalVormen() + " vormen: \n ";
+
+	public String toString() {
+		String eersteDeel = "Tekening met naam " + getNaam() + " bestaat uit " + getAantalVormen() + " vormen: \n ";
 		String tweedeDeel = "";
 		for(int i=0; i<getAantalVormen(); i++){
 			tweedeDeel = tweedeDeel + getVorm(i).toString() + "\n";

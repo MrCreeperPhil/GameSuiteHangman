@@ -1,6 +1,5 @@
 package domain;
 
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -10,7 +9,6 @@ import org.junit.Test;
 
 public class TekeningTest {
 	private Vorm gebouw;
-	private Vorm gebouwBuitenGrenzen;
 	private Vorm dak;
 	private Vorm deur;
 	private Vorm raam;
@@ -19,11 +17,9 @@ public class TekeningTest {
 	private Vorm raambalk2;
 	private Vorm schouwNietInTekening;
 	
-	
 	@Before
 	public void setUp() {
 		gebouw = new Rechthoek(new Punt(100, 200), 200, 180);
-		gebouwBuitenGrenzen = new Rechthoek(new Punt(200, 100), 300, 250);
 		dak = new Driehoek(new Punt(100, 200), new Punt(300, 200), new Punt(200, 100));
 		deur = new Rechthoek(new Punt(130, 280), 50,100);
 		raam = new Rechthoek(new Punt(210, 220), 80, 60);
@@ -104,56 +100,8 @@ public class TekeningTest {
 		huisMetSchouw.verwijder(schouwNietInTekening);
 		assertTrue(huis.equals(huisMetSchouw));
 	}
-	
-	@Test (expected = DomainException.class)
-	public void voegToe_roept_DomainException_op_wanneer_null(){
-		Tekening huis = createHuisMetSchouw();
-		huis.voegToe(null);
-	}
-	@Test (expected = DomainException.class)
-	public void voegToe_roept_DomainException_wanneer_vorm_al_voorkomt(){
-		Tekening huis = createHuisMetSchouw();
-		huis.voegToe(gebouw);
-	}
-	@Test (expected = DomainException.class)
-	public void voegToe_roept_DomainException_wanneer_vorm_buiten_grenzen_ligt(){
-		Tekening huis = createHuisMetSchouw();
-		huis.voegToe(gebouwBuitenGrenzen);
-	}
-	@Test
-	public void voegToe_voegt_huis_toe_binnen_grenzen(){
-		Tekening huis = createHuisMetSchouw();
-		Tekening huisMetSchouw = createHuisMetSchouw();
-		assertTrue(huis.equals(huisMetSchouw));
-	}
-	@Test (expected = DomainException.class)
-	public void getVorm_geeft_error_wanneer_getal_groter_dan_ArrayList(){
-		Tekening huis = createHuisMetSchouw();
-		huis.getVorm(9);
-	}
-	@Test (expected = DomainException.class)
-	public void getVorm_geeft_error_wanneer_getal_kleiner_dan_null(){
-		Tekening huis = createHuisMetSchouwZonderDeur();
-		huis.getVorm(-4);
-	}
-	@Test
-	public void getVorm_geeft_waarde_terug_wanneer_correcte_index(){
-		Tekening huis = createHuisMetSchouw();
-		assertTrue(huis.getVorm(4).equals(deurknop));
-	}
-	@Test (expected = DomainException.class)
-	public void verwijder_geeft_error_wanneer_voorwerp_niet_voorkomt(){
-		Tekening huis = createHuisZonderShouw();
-		huis.verwijder(schouwNietInTekening);
-	}
-	@Test
-	public void verwijder_verwijdert_schouw(){
-		Tekening huis = createHuisMetSchouw();
-		Tekening huisZonderSchouw = createHuisZonderShouw();
-		huis.verwijder(schouwNietInTekening);
-		assertTrue(huis.equals(huisZonderSchouw));
-	}
-	
+
+
 	public Tekening createHuisMetSchouw() {
 		Tekening huisMetSchouw = new Tekening("huisMetSchouw");
 		huisMetSchouw.voegToe(gebouw);
@@ -189,17 +137,6 @@ public class TekeningTest {
 		huisMetSchouwZonderDeur.voegToe(raambalk2);
 		huisMetSchouwZonderDeur.voegToe(schouwNietInTekening);
 		return huisMetSchouwZonderDeur;
-	}
-	public Tekening createHuisBuitenGrenzen() {
-		Tekening huisBuitenGrenzen = new Tekening("huisBuitenGrenzen");
-		huisBuitenGrenzen.voegToe(gebouwBuitenGrenzen);
-		huisBuitenGrenzen.voegToe(dak);
-		huisBuitenGrenzen.voegToe(deur);
-		huisBuitenGrenzen.voegToe(raam);
-		huisBuitenGrenzen.voegToe(deurknop);
-		huisBuitenGrenzen.voegToe(raambalk1);
-		huisBuitenGrenzen.voegToe(raambalk2);
-		return huisBuitenGrenzen;
 	}
 
 }

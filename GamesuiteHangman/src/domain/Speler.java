@@ -13,7 +13,7 @@ public class Speler {
 		return naam;
 	}
 
-	private void setNaam(String naam) {
+	public void setNaam(String naam) {
 		if (naam == null || naam.trim().isEmpty()) {
 			throw new DomainException("Dit mag niet");
 		} else {
@@ -37,7 +37,7 @@ public class Speler {
 		return score;
 	}
 
-	private void setScore(int score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 
