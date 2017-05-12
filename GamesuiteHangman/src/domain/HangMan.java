@@ -5,10 +5,12 @@ public class HangMan {
 	private Speler speler;
 	private WoordenLijst woordenLijst;
 	private HintWoord hintwoord;
+	private TekeningHangMan tekening = new TekeningHangMan();
 
 	public HangMan(Speler speler, WoordenLijst woordenLijst) {
 		this.setSpeler(speler);
 		this.setWoordenLijst(woordenLijst);
+		hintwoord = new HintWoord(woordenLijst.getRandomWoord());
 	}
 
 	private void setSpeler(Speler speler) {
@@ -26,7 +28,7 @@ public class HangMan {
 	}
 
 	public String getHint() {
-		return null;
+		return this.hintwoord.toString();
 	}
 
 	public Speler getSpeler() {
@@ -34,19 +36,27 @@ public class HangMan {
 	}
 
 	public TekeningHangMan getTekening() {
-		return null;
+		return this.tekening;
 	}
 
 	public void raad(char letter) {
+		if (!this.hintwoord.raad(letter)) {
+			this.tekening.zetVolgendeZichtbaar();
+		}
 
 	}
 
 	public boolean isGameOver() {
+		try {
+			tekening.zetVolgendeZichtbaar();
+		} catch (DomainException e) {
+			return true;
+		}
 		return false;
 	}
 
 	public boolean isGewonnen() {
-		return false;
+		return hintwoord.isGeraden();
 	}
 
 }
