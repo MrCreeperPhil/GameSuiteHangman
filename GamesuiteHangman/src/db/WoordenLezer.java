@@ -27,7 +27,7 @@ public class WoordenLezer {
 		}
 		
 		catch (FileNotFoundException e) {
-			throw new DomainException("De file kan niet gevonden worden");
+			throw new DbException("De file kan niet gevonden worden");
 		}
 		
 		
