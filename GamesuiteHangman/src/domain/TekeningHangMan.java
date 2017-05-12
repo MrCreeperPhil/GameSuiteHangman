@@ -85,18 +85,14 @@ public class TekeningHangMan extends Tekening {
 		}
 	}
 
-	@Override
-	public void teken(Graphics g) {
-		for (Vorm vorm : galg) {
-			if (vorm.isZichtbaar()) {
-				vorm.teken(g);
+	public void teken(Graphics graphics) {
+		for (Vorm vorm : galg)
+			 vorm.teken(graphics);
+		for (Vorm vorm : mannetje)
+			if(vorm.isZichtbaar()){
+				 vorm.teken(graphics);
 			}
-		}
-		for (Vorm vorm : mannetje) {
-			if (vorm.isZichtbaar()) {
-				vorm.teken(g);
-			}
-		}
+
 	}
 
 	@Override
