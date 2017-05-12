@@ -1,9 +1,6 @@
 package domain;
 
-import java.awt.List;
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
 
 public class Tekening {
 	private String naam;
@@ -12,71 +9,77 @@ public class Tekening {
 	private static final int MAX_X = 399;
 	private static final int MAX_Y = 399;
 	ArrayList<Vorm> VormenVanTekening = new ArrayList<Vorm>();
-	
-	public Tekening(String naam){
+
+	public Tekening(String naam) {
 		setNaam(naam);
 	}
-	
-	public String getNaam(){
+
+	public String getNaam() {
 		return naam;
 	}
-	
-	private void setNaam(String naam){
-		if(naam == null || naam.trim().isEmpty()){
+
+	public void setNaam(String naam) {
+		if (naam == null || naam.trim().isEmpty()) {
 			throw new IllegalArgumentException(" Name is invalid ");
-		}
-		else{
-			this.naam=naam;
+		} else {
+			this.naam = naam;
 		}
 	}
-	
-	public void voegToe(Vorm vorm){
-		if(bevat(vorm) == false){
-			 Omhullende figuur =  vorm.getOmhullende();
-			 
-			 if (figuur.getMaximumX() > MAX_X || figuur.getMinimumX() < MIN_X || figuur.getMaximumX() > MAX_Y || figuur.getMinimumY() < MIN_Y){
-				 throw new DomainException("De figuur moet binnen de grenzen liggen");
-			 }
-			 else{
-				 VormenVanTekening.add(vorm);
-			 }
-			 
+
+	public void voegToe(Vorm vorm) {
+		if (bevat(vorm) == false) {
+			Omhullende figuur = vorm.getOmhullende();
+
+			if (figuur.getMaximumX() > MAX_X || figuur.getMinimumX() < MIN_X || figuur.getMaximumX() > MAX_Y
+					|| figuur.getMinimumY() < MIN_Y) {
+				throw new DomainException("De figuur moet binnen de grenzen liggen");
+			} else {
+				VormenVanTekening.add(vorm);
+			}
+
 		}
-		
-		else
-		{throw new DomainException(" The Figure is already in the Picture ");}
+
+		else {
+			throw new DomainException(" The Figure is already in the Picture ");
+		}
 	}
-	public Vorm getVorm(int index){
-		if (index <0 || index > VormenVanTekening.size()) throw new DomainException("de array lest begint te tellen vanaf 0");
+
+	public Vorm getVorm(int index) {
+		if (index < 0 || index > VormenVanTekening.size())
+			throw new DomainException("de array lest begint te tellen vanaf 0");
 		return VormenVanTekening.get(index);
 	}
-	
-	public int getAantalVormen(){
+
+	public int getAantalVormen() {
 		return VormenVanTekening.size();
 	}
-	
-	public void verwijder(Vorm vorm){
-		if(bevat(vorm) == true){
+
+	public void verwijder(Vorm vorm) {
+		if (bevat(vorm) == true) {
 			VormenVanTekening.remove(vorm);
-		}else{throw new DomainException(" The figure was not found ");}
+		} else {
+			throw new DomainException(" The figure was not found ");
+		}
 	}
-	
-	
-	public boolean bevat(Vorm vorm){
-		if (vorm== null) throw new DomainException("de vorm mag niet leeg zijn");
-		if(VormenVanTekening.contains(vorm))return true;
-		return false;	
+
+	public boolean bevat(Vorm vorm) {
+		if (vorm == null)
+			throw new DomainException("de vorm mag niet leeg zijn");
+		if (VormenVanTekening.contains(vorm))
+			return true;
+		return false;
 	}
-	
-	
-	public boolean equals(Object object){
-		if(object instanceof Tekening){
+
+	@Override
+	public boolean equals(Object object) {
+		if (object instanceof Tekening) {
+
 			Tekening tekening = (Tekening) object;
-			if(tekening.getAantalVormen() != this.getAantalVormen()){
+			if (tekening.getAantalVormen() != this.getAantalVormen()) {
 				return false;
 			}
-			for (Vorm vorm : VormenVanTekening){
-				if (!tekening.bevat(vorm)){
+			for (Vorm vorm : VormenVanTekening) {
+				if (!tekening.bevat(vorm)) {
 					return false;
 				}
 			}
@@ -84,17 +87,15 @@ public class Tekening {
 		}
 		return false;
 	}
-	
-	@Override
 
+	@Override
 	public String toString() {
-		String eersteDeel = "Tekening met naam " + getNaam() + " bestaat uit " + getAantalVormen() + " vormen: \n ";
+		String eersteDeel = "Tekening met naam boom bestaat uit " + getAantalVormen() + " vormen: \n ";
 		String tweedeDeel = "";
-		for(int i=0; i<getAantalVormen(); i++){
+		for (int i = 0; i < getAantalVormen(); i++) {
 			tweedeDeel = tweedeDeel + getVorm(i).toString() + "\n";
 		}
 		return eersteDeel + tweedeDeel;
 	}
-	
-	
+
 }

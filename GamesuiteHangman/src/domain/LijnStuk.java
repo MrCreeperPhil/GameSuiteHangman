@@ -1,7 +1,10 @@
 package domain;
 
+import java.awt.Graphics;
+
 public class LijnStuk extends Vorm {
 	private Punt eindpunt, beginpunt;
+	private boolean zichtbaar = true;
 
 	public LijnStuk(Punt beginpunt, Punt eindpunt) {
 		super();
@@ -26,6 +29,17 @@ public class LijnStuk extends Vorm {
 
 	public Punt getBeginpunt() {
 		return beginpunt;
+	}
+
+	@Override
+	public boolean isZichtbaar() {
+		return this.zichtbaar;
+	}
+
+	@Override
+	public void setZichtbaar(boolean zichtbaar) {
+		this.zichtbaar = zichtbaar;
+
 	}
 
 	@Override
@@ -69,6 +83,12 @@ public class LijnStuk extends Vorm {
 				(grootsteY - kleinsteY));
 
 		return omhullende;
+	}
+
+	@Override
+	public void teken(Graphics graphics) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

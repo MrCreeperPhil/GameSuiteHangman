@@ -30,13 +30,22 @@ public class HintWoord {
 	}
 
 	public boolean raad(char letter) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		for (HintLetter hintletter : hintLetters) {
+			if (hintletter.raad(letter)) {
+				result = true;
+			}
+		}
+		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "HintWoord []";
+		String result = "";
+		for (HintLetter hintletter : hintLetters) {
+			result += hintletter.toChar();
+		}
+		return result;
 	}
 
 }
