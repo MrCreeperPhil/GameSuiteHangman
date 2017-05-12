@@ -62,5 +62,17 @@ public class WoordenLijstTest {
 
 		woordenlijstMetGeldigeWoorden.voegToe(woordAlInLijst);
 	}
-
+	
+	@Test (expected = DomainException.class)
+	public void getRandomWoord_geeft_randomwoord_en_checkt_of_woord_bestaat(){
+		String randomWoord = woordenlijstMetGeldigeWoorden.getRandomWoord();
+		woordenlijstMetGeldigeWoorden.setWoord(randomWoord);		
+	}
+	
+	@Test (expected = DomainException.class)
+	public void getRandomWoord_geeft_exception_wanneer_leeg(){
+		woordenlijstLeeg.getRandomWoord();
+	}
+	
+	
 }
