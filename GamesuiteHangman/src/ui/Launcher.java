@@ -14,6 +14,7 @@ public class Launcher {
 	// launcher blijft loopen zolang run() boolean true is.
 	public boolean run() {
 		int action = 0;
+		Speler speler= null;
 		String actionString = JOptionPane
 				.showInputDialog("Wat wil je doen? \n1. speler aanmaken? \n2. figuur tekenen? \n0. exit");
 
@@ -41,7 +42,7 @@ public class Launcher {
 			// nieuwe speler
 			String naam = JOptionPane.showInputDialog("Welkom! \nHoe heet je?");
 			try {
-				Speler speler = new Speler(naam);
+				speler = new Speler(naam);
 				JOptionPane.showMessageDialog(null, speler.getNaam() + " heeft als score: " + speler.getScore());
 
 				JOptionPane.showMessageDialog(null, "... zal binnekort spelen", speler.getNaam(),
@@ -58,6 +59,11 @@ public class Launcher {
 				return false;
 			}
 			Tekening figuren = new Tekening(naamFiguur);
+			
+			GameHoofdScherm view = new GameHoofdScherm(speler.getNaam(), figuren);
+			view.setVisible(true);
+			view.teken();
+			//gamehoofdscherm
 			
 			while(action!=0){
 				
