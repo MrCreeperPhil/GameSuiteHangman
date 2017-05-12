@@ -14,6 +14,7 @@ public class Launcher {
 	// launcher blijft loopen zolang run() boolean true is.
 	public boolean run() {
 		int action = 0;
+		Speler speler= null;
 		String actionString = JOptionPane
 				.showInputDialog("Wat wil je doen? \n1. speler aanmaken? \n2. figuur tekenen? \n0. exit");
 
@@ -41,7 +42,7 @@ public class Launcher {
 			// nieuwe speler
 			String naam = JOptionPane.showInputDialog("Welkom! \nHoe heet je?");
 			try {
-				Speler speler = new Speler(naam);
+				speler = new Speler(naam);
 				JOptionPane.showMessageDialog(null, speler.getNaam() + " heeft als score: " + speler.getScore());
 
 				JOptionPane.showMessageDialog(null, "... zal binnekort spelen", speler.getNaam(),
@@ -59,7 +60,13 @@ public class Launcher {
 			}
 			Tekening figuren = new Tekening(naamFiguur);
 			
+			GameHoofdScherm view = new GameHoofdScherm(speler.getNaam(), figuren);
+			view.setVisible(true);
+			view.teken();
+			//gamehoofdscherm
+			
 			while(action!=0){
+				
 			
 			int action2 = 0;
 			String figuurAction = JOptionPane.showInputDialog(null, "Wat wil je doen: \n 1. Vorm maken \n 2. Tekening tonen \n 0. Exit ");
@@ -80,7 +87,7 @@ public class Launcher {
 				
 			case 1:
 				//Vorm maken
-				String[] choices = { "Punt", "Cirkel", "Driehoek", "Rechthoek" };
+				String[] choices = { "Punt", "Cirkel", "Driehoek", "Rechthoek", "Lijnstuk" };
 				String input = (String) JOptionPane.showInputDialog(null, "Choose now...", "The Choice of a Lifetime",
 						JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
 
@@ -92,14 +99,12 @@ public class Launcher {
 
 						case "Punt":
 							Punt punt = punt();
-							
 							break;
 
 						case "Cirkel":
 							Punt punt2 = punt();
 							int straal = Integer.parseInt(JOptionPane.showInputDialog("Welke straal?"));
 							Cirkel cirkel = new Cirkel(punt2, straal);
-							
 							figuren.voegToe(cirkel);
 							break;
 						case "Rechthoek":
@@ -107,7 +112,6 @@ public class Launcher {
 							int hoogte = Integer.parseInt(JOptionPane.showInputDialog("Welke hoogte?"));
 							int breedte = Integer.parseInt(JOptionPane.showInputDialog("Welke breedte?"));
 							Rechthoek rechthoek = new Rechthoek(punt3, breedte, hoogte);
-							
 							figuren.voegToe(rechthoek);
 							break;
 						case "Driehoek":
@@ -118,15 +122,18 @@ public class Launcher {
 							JOptionPane.showMessageDialog(null, "geef coördinaten voor punt 3");
 							Punt punt6 = punt();
 							Driehoek driehoek = new Driehoek(punt4, punt5, punt6);
-							
 							figuren.voegToe(driehoek);
-							//case lijnstuk 
-							//figuren.voegToe(lijnstuk);
 							break;
-
+						case "Lijnstuk":
+							JOptionPane.showMessageDialog(null, "geef coördinaten voor punt 1");
+							Punt punt7 = punt();
+							JOptionPane.showMessageDialog(null, "geef coördinaten voor punt 2");
+							Punt punt8 = punt();
+							LijnStuk lijnstuk = new LijnStuk (punt7, punt8);
+							figuren.voegToe(lijnstuk);
 						}	
+
 						break;
-						
 					} catch (NumberFormatException e) {
 						System.out.println("geen lege waarden doorgeven");
 					} catch (DomainException e) {
@@ -138,10 +145,9 @@ public class Launcher {
 				
 				}
 			
-				
+		
 			
 		}
-
 
 		case 999:
 			break;
