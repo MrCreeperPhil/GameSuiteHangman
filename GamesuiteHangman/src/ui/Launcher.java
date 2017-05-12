@@ -59,8 +59,6 @@ public class Launcher {
 			}
 			Tekening figuren = new Tekening(naamFiguur);
 			
-			while(action!=0){
-			
 			int action2 = 0;
 			String figuurAction = JOptionPane.showInputDialog(null, "Wat wil je doen: \n 1. Vorm maken \n 2. Tekening tonen \n 0. Exit ");
 			if (figuurAction == null) {
@@ -92,14 +90,14 @@ public class Launcher {
 
 						case "Punt":
 							Punt punt = punt();
-							
+							JOptionPane.showMessageDialog(null, punt);
 							break;
 
 						case "Cirkel":
 							Punt punt2 = punt();
 							int straal = Integer.parseInt(JOptionPane.showInputDialog("Welke straal?"));
 							Cirkel cirkel = new Cirkel(punt2, straal);
-							
+							JOptionPane.showMessageDialog(null, cirkel);
 							figuren.voegToe(cirkel);
 							break;
 						case "Rechthoek":
@@ -107,7 +105,7 @@ public class Launcher {
 							int hoogte = Integer.parseInt(JOptionPane.showInputDialog("Welke hoogte?"));
 							int breedte = Integer.parseInt(JOptionPane.showInputDialog("Welke breedte?"));
 							Rechthoek rechthoek = new Rechthoek(punt3, breedte, hoogte);
-							
+							JOptionPane.showMessageDialog(null, rechthoek);
 							figuren.voegToe(rechthoek);
 							break;
 						case "Driehoek":
@@ -118,15 +116,14 @@ public class Launcher {
 							JOptionPane.showMessageDialog(null, "geef coördinaten voor punt 3");
 							Punt punt6 = punt();
 							Driehoek driehoek = new Driehoek(punt4, punt5, punt6);
-							
+							JOptionPane.showMessageDialog(null, driehoek);
 							figuren.voegToe(driehoek);
+							break;
 							//case lijnstuk 
 							//figuren.voegToe(lijnstuk);
-							break;
-
 						}	
+
 						break;
-						
 					} catch (NumberFormatException e) {
 						System.out.println("geen lege waarden doorgeven");
 					} catch (DomainException e) {
@@ -134,13 +131,13 @@ public class Launcher {
 					}
 			case 2: 
 				//Tekening tonen
-				JOptionPane.showMessageDialog(null, figuren.toString());
+				JOptionPane.showMessageDialog(null, "Tekening met naam " + naamFiguur + " bestaat uit " + figuren.getAantalVormen() + " vormen: \n" +  figuren.toString());
 				
 				}
 			
-				
+				break;
 			
-		}
+			
 
 
 		case 999:
