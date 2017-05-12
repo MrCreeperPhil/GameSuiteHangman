@@ -2,7 +2,7 @@ package domain;
 
 public class HangMan {
 
-	public HangMan(Speler speler, Woordenlijst woordenlijst) {
+	public HangMan(Speler speler, WoordenLijst woordenlijst) {
 		// TODO Auto-generated constructor stub
 	}
 
