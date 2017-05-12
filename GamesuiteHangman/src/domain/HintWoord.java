@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 public class HintWoord {
 
-	private ArrayList<HintLetter> hintLetters;
+	private ArrayList<HintLetter> hintLetters = new ArrayList<>();
 
 	public HintWoord(String woord) {
+		if (woord == null || woord.trim().isEmpty()) {
+			throw new DomainException("Vul een woord in");
+		}
 		for (char letter : woord.toCharArray()) {
 			this.hintLetters.add(new HintLetter(letter));
 		}
@@ -30,13 +33,23 @@ public class HintWoord {
 	}
 
 	public boolean raad(char letter) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		for (HintLetter hintletter : hintLetters) {
+			if (hintletter.raad(letter)) {
+				result = true;
+			}
+		}
+		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "HintWoord []";
+		String result = "";
+		for (HintLetter hintletter : hintLetters) {
+			result += " " + hintletter.toChar();
+		}
+		result = result.substring(1);
+		return result;
 	}
 
 }

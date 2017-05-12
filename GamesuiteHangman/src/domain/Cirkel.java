@@ -1,8 +1,11 @@
 package domain;
 
-public class Cirkel extends Vorm implements Drawable {
+import java.awt.Graphics;
+
+public class Cirkel extends Vorm {
 	private Punt middelpunt;
 	private int radius;
+	private boolean zichtbaar = true;
 
 	public Cirkel(Punt middelpunt, int radius) {
 		super();
@@ -53,5 +56,22 @@ public class Cirkel extends Vorm implements Drawable {
 	public Omhullende getOmhullende() {
 		return new Omhullende(new Punt(this.middelpunt.getX() - this.radius, this.middelpunt.getY() - this.radius),
 				radius * 2, radius * 2);
+	}
+
+	@Override
+	public boolean isZichtbaar() {
+		return this.zichtbaar;
+	}
+
+	@Override
+	public void setZichtbaar(boolean zichtbaar) {
+		this.zichtbaar = zichtbaar;
+
+	}
+
+	@Override
+	public void teken(Graphics graphics) {
+		// TODO Auto-generated method stub
+
 	}
 }
