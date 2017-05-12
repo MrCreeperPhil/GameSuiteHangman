@@ -58,9 +58,9 @@ public class Launcher {
 			if (naamFiguur == null || naamFiguur.trim().equals("")){
 				return false;
 			}
-			System.out.print(speler);
+			
 			Tekening figuren = new Tekening(naamFiguur);
-			System.out.print(speler);
+		
 			GameHoofdScherm view = new GameHoofdScherm(speler.getNaam(), figuren);
 			view.setVisible(true);
 			view.teken();
@@ -107,6 +107,7 @@ public class Launcher {
 							int straal = Integer.parseInt(JOptionPane.showInputDialog("Welke straal?"));
 							Cirkel cirkel = new Cirkel(punt2, straal);
 							figuren.voegToe(cirkel);
+							view.teken();
 							break;
 						case "Rechthoek":
 							Punt punt3 = punt();
@@ -114,6 +115,7 @@ public class Launcher {
 							int breedte = Integer.parseInt(JOptionPane.showInputDialog("Welke breedte?"));
 							Rechthoek rechthoek = new Rechthoek(punt3, breedte, hoogte);
 							figuren.voegToe(rechthoek);
+							view.teken();
 							break;
 						case "Driehoek":
 							JOptionPane.showMessageDialog(null, "geef coördinaten voor punt 1");
@@ -124,6 +126,7 @@ public class Launcher {
 							Punt punt6 = punt();
 							Driehoek driehoek = new Driehoek(punt4, punt5, punt6);
 							figuren.voegToe(driehoek);
+							view.teken();
 							break;
 						case "Lijnstuk":
 							JOptionPane.showMessageDialog(null, "geef coördinaten voor punt 1");
@@ -132,6 +135,7 @@ public class Launcher {
 							Punt punt8 = punt();
 							LijnStuk lijnstuk = new LijnStuk (punt7, punt8);
 							figuren.voegToe(lijnstuk);
+							view.teken();
 						}	
 
 						break;
